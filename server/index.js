@@ -6,40 +6,40 @@ app.use(express.json());
 app.use(cors());
 
 const {
-  findAllTodos,
-  findTodoById,
-  addTodo,
-  updateTodo,
-  deleteTodo,
+  findAllUsers,
+  findUserById,
+  addUser,
+  updateUser,
+  deleteUser,
 } = require("../database");
 
 // Root
 app.get("/", (req, res) => res.send("Hello World"));
 
-// GET : get all todos
-app.get("/todos", async (req, res) => res.send(await findAllTodos()));
+// GET : get all users
+app.get("/users", async (req, res) => res.send(await findAllUsers()));
 
-// GET : get a todo
-app.get("/todos/:id", async (req, res) =>
-  res.send(await findTodoById(req.params.id))
+// GET : get a user
+app.get("/users/:id", async (req, res) =>
+  res.send(await findUserById(req.params.id))
 );
 
-// POST : create a todo
-app.post("/todos", async (req, res) => {
-  const todo = await addTodo(req.body);
-  res.send(todo);
+// POST : create a user
+app.post("/users", async (req, res) => {
+  const user = await addUser(req.body);
+  res.send(user);
 });
 
-// PUT : update a todo
-app.put("/todos/:id", async (req, res) => {
-  const todo = await updateTodo(req.params.id, req.body);
-  res.send(todo);
+// PUT : update a user
+app.put("/users/:id", async (req, res) => {
+  const user = await updateUser(req.params.id, req.body);
+  res.send(user);
 });
 
-// DELETE : delete a todo
-app.delete("/todos/:id", async (req, res) => {
-  const todo = await deleteTodo(req.params.id);
-  res.send(todo);
+// DELETE : delete a user
+app.delete("/users/:id", async (req, res) => {
+  const user = await deleteUser(req.params.id);
+  res.send(user);
 });
 
 module.exports = app;

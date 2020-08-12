@@ -6,11 +6,11 @@ mongoose.Promise = global.Promise;
   mongoose.connection.on("connected", () =>
     console.log("Connected to database")
   );
-  await mongoose.connect("mongodb://localhost:27017/todos", {
+  await mongoose.connect("mongodb://localhost:27017/users", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
   });
 })();
 
-module.exports = require("./repository/todo-repository");
+module.exports = require("./repository/user-repository");
