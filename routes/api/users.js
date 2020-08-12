@@ -31,13 +31,21 @@ router.post("/", async (req, res) => {
 // PUT : update a user
 router.put("/:id", async (req, res) => {
   const user = await updateUser(req.params.id, req.body);
-  res.send(user);
+  if (user) {
+    res.send(user);
+  } else {
+    res.status(400).send("User NOT found");
+  }
 });
 
 // DELETE : delete a user
 router.delete("/:id", async (req, res) => {
   const user = await deleteUser(req.params.id);
-  res.send(user);
+  if (user) {
+    res.send(user);
+  } else {
+    res.status(400).send("User NOT found");
+  }
 });
 
 module.exports = router;
